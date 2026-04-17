@@ -1,0 +1,46 @@
+import type { WeddingEvent } from "@/lib/events";
+
+function toIcsUtc(dateIso: string): string {
+  const date = new Date(dateIso);
+  const yyyy = date.getUTCFullYear();
+  const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(date.getUTCDate()).padStart(2, "0");
+  const hh = String(date.getUTCHours()).padStart(2, "0");
+  const mi = String(date.getUTCMinutes()).padStart(2, "0");
+  const ss = String(date.getUTCSeconds()).padStart(2, "0");
+  return `${yyyy}${mm}${dd}T${hh}${mi}${ss}Z`;
+}
+
+function escapeIcs(text: string): string {
+  return text.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
+}
+
+export function createIcsContent(event: WeddingEvent): string {
+  const uid = `${event.key}-${event.startsAtIso}@platform3.invite`;
+  const dtStamp = toIcsUtc(new Date().toISOString());
+  const dtStart = toIcsUtc(event.startsAtIso);
+  const dtEnd = toIcsUtc(event.endsAtIso);
+  const summary = escapeIcs(`${event.title} - ${event.venue}`);
+  const location = escapeIcs(event.venue);
+  const description = escapeIcs(
+    `${event.subtitle}\nAddress: ${event.address}\nTheme: Platform 3 Wedding Journey`
+  );
+
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Platform3Invite//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:${uid}`,
+    `DTSTAMP:${dtStamp}`,
+    `DTSTART:${dtStart}`,
+    `DTEND:${dtEnd}`,
+    `SUMMARY:${summary}`,
+    `LOCATION:${location}`,
+    `DESCRIPTION:${description}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+}

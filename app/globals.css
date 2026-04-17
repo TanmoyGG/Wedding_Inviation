@@ -1,0 +1,41 @@
+@config "../tailwind.config.ts";
+@import "tailwindcss";
+
+:root {
+  --background: #f9f0e2;
+  --foreground: #2f2a28;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.ticket-cutout::before,
+.ticket-cutout::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--background);
+  transform: translateY(-50%);
+}
+
+.ticket-cutout::before {
+  left: -10px;
+}
+
+.ticket-cutout::after {
+  right: -10px;
+}
