@@ -66,7 +66,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
   ];
 
   return (
-    <main className="bg-[radial-gradient(circle_at_top,#fdf7f0_0%,#f5e7d6_35%,#efd8bf_100%)] px-4 py-6 sm:px-8 sm:py-10">
+    <main className="invite-ambient bg-[radial-gradient(circle_at_top,#fdf7f0_0%,#f5e7d6_35%,#efd8bf_100%)] px-4 py-6 sm:px-8 sm:py-10">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <section className="rounded-3xl border border-wedding-journey-brass/35 bg-white/70 px-5 py-7 text-center shadow-ticket sm:px-10">
           <h1 className="font-display text-4xl leading-tight text-wedding-journey-maroon sm:text-6xl">
