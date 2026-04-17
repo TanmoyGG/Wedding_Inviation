@@ -13,11 +13,21 @@ function toGoogleUtc(dateIso: string): string {
 
 export function createGoogleCalendarLink(event: WeddingEvent): string {
   const base = "https://calendar.google.com/calendar/render";
+  const title =
+    event.key === "wedding"
+      ? "Wedding Ceremony of Partha and Trisa - Roushan's Party Center, Feni"
+      : "Reception of Partha and Trisa - Grand Prince Convention Hall, Mirpur 12, Dhaka";
+
+  const motivationalLine =
+    event.key === "wedding"
+      ? "Two souls, one ticket to forever."
+      : "A beautiful journey continues with love, laughter, and blessings.";
+
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: `${event.title} - ${event.venue}`,
+    text: title,
     dates: `${toGoogleUtc(event.startsAtIso)}/${toGoogleUtc(event.endsAtIso)}`,
-    details: `${event.subtitle}\nAddress: ${event.address}\nTheme: Platform 3 Wedding Journey`,
+    details: `Groom: Partha Saha\nBride: Trisa Das\nEvent: ${event.title}\nAddress: ${event.address}\n${motivationalLine}`,
     location: event.venue,
   });
 
