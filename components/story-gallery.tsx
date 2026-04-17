@@ -19,8 +19,8 @@ export function StoryGallery({ frames }: StoryGalleryProps) {
       {frames.map((frame, index) => (
         <motion.figure
           key={`${frame.src}-${index}`}
-          initial={{ opacity: 0, y: 36, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 44, rotate: index % 2 === 0 ? -1.5 : 1.5, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.05 }}
           className="overflow-hidden rounded-3xl border border-wedding-journey-brass/35 bg-white/80 shadow-ticket"
@@ -32,8 +32,9 @@ export function StoryGallery({ frames }: StoryGalleryProps) {
               fill
               sizes="(max-width: 768px) 100vw, 1100px"
               priority={index === 0}
-              className="object-cover"
+              className="object-cover transition duration-500 hover:scale-[1.025]"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-wedding-journey-maroon/12 via-transparent to-transparent" />
           </div>
           {frame.caption ? (
             <figcaption className="px-4 py-3 text-center text-sm text-wedding-journey-charcoal/80 sm:text-base">
