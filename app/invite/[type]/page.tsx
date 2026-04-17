@@ -5,7 +5,6 @@ import { Directions } from "@/components/directions";
 import { EventTicket } from "@/components/event-ticket";
 import { SaveCalendarButton } from "@/components/save-calendar-button";
 import { StoryGallery } from "@/components/story-gallery";
-import { StoryLines } from "@/components/story-lines";
 import { StationMarquee } from "@/components/station-marquee";
 import { Timeline } from "@/components/timeline";
 import {
@@ -71,7 +70,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <section className="rounded-3xl border border-wedding-journey-brass/35 bg-white/70 px-5 py-7 text-center shadow-ticket sm:px-10">
           <h1 className="font-display text-4xl leading-tight text-wedding-journey-maroon sm:text-6xl">
-            {couple.groom} and {couple.bride}
+            The Journey of Parth & Trisa
           </h1>
           <p className="mt-3 text-sm uppercase tracking-[0.18em] text-wedding-journey-charcoal/70 sm:text-base">
             {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}
@@ -86,8 +85,6 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
         />
 
         <StoryGallery frames={openingFrames} />
-
-        <StoryLines lines={storyLines} />
 
         <section className="grid gap-5 rounded-3xl border border-wedding-journey-brass/35 bg-white/70 p-4 shadow-ticket sm:p-6 lg:grid-cols-[1.35fr_1fr]">
           <div className="overflow-hidden rounded-2xl border border-wedding-journey-brass/35 bg-white">
@@ -112,7 +109,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
                 {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}
               </h2>
               <p className="mt-2 text-sm text-wedding-journey-charcoal/75">
-                Crafted with the same mood and palette as your original invitation artwork.
+                A wedding journey from Platform 3 to a lifetime of togetherness.
               </p>
             </div>
 
