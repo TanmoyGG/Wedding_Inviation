@@ -5,6 +5,7 @@ import { Directions } from "@/components/directions";
 import { EventTicket } from "@/components/event-ticket";
 import { SaveCalendarButton } from "@/components/save-calendar-button";
 import { StoryGallery } from "@/components/story-gallery";
+import { StoryLines } from "@/components/story-lines";
 import { StationMarquee } from "@/components/station-marquee";
 import { Timeline } from "@/components/timeline";
 import {
@@ -36,18 +37,15 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
     {
       src: "/assets/images/Front page.jpg",
       alt: "Front page artwork",
-      marqueeLine: "The Journey of a Lifetime Begins at Platform 3",
     },
     {
       src: "/assets/images/page 2.jpg",
       alt: "Second page artwork",
-      marqueeLine: "Two different tracks, one destination: Love.",
     },
     {
       src: "/assets/images/Bride and groom introduction.jpg",
       alt: "Bride and groom introduction",
       caption: `${couple.groom} and ${couple.bride}`,
-      marqueeLine: "Two souls, one ticket to paradise.",
     },
   ];
 
@@ -55,7 +53,6 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
     {
       src: "/assets/images/platform-3.jpg",
       alt: "Platform 3 illustrated finale",
-      marqueeLine: "Next Stop: Happily Ever After",
     },
   ];
 
@@ -74,7 +71,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <section className="rounded-3xl border border-wedding-journey-brass/35 bg-white/70 px-5 py-7 text-center shadow-ticket sm:px-10">
           <h1 className="font-display text-4xl leading-tight text-wedding-journey-maroon sm:text-6xl">
-            The Journey of Parth & Trisa
+            {couple.groom} and {couple.bride}
           </h1>
           <p className="mt-3 text-sm uppercase tracking-[0.18em] text-wedding-journey-charcoal/70 sm:text-base">
             {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}
@@ -89,6 +86,8 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
         />
 
         <StoryGallery frames={openingFrames} />
+
+        <StoryLines lines={storyLines} />
 
         <section className="grid gap-5 rounded-3xl border border-wedding-journey-brass/35 bg-white/70 p-4 shadow-ticket sm:p-6 lg:grid-cols-[1.35fr_1fr]">
           <div className="overflow-hidden rounded-2xl border border-wedding-journey-brass/35 bg-white">
@@ -117,25 +116,11 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
               </p>
             </div>
 
-            <StationMarquee
-              lines={[
-                "Life is a beautiful journey; we're just making our first stop as a married couple.",
-              ]}
-            />
-
             <div className="space-y-3">
               {selectedEvents.map((event) => (
                 <EventTicket key={event.key} event={event} />
               ))}
             </div>
-
-            <StationMarquee
-              lines={[
-                `Boarding the train to forever with ${couple.groom} and ${couple.bride}`,
-                `Witness the union of ${couple.groom} and ${couple.bride} as they begin their new chapter together`,
-                "Together with their families, Parth and Trisa invite you to share in their joy",
-              ]}
-            />
 
             <div className="flex flex-wrap gap-3">
               {selectedEvents.map((event) => (
