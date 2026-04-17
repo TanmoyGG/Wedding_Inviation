@@ -1,5 +1,29 @@
 import type { WeddingEvent } from "@/lib/events";
 
+function toGoogleUtc(dateIso: string): string {
+  const date = new Date(dateIso);
+  const yyyy = date.getUTCFullYear();
+  const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(date.getUTCDate()).padStart(2, "0");
+  const hh = String(date.getUTCHours()).padStart(2, "0");
+  const mi = String(date.getUTCMinutes()).padStart(2, "0");
+  const ss = String(date.getUTCSeconds()).padStart(2, "0");
+  return `${yyyy}${mm}${dd}T${hh}${mi}${ss}Z`;
+}
+
+export function createGoogleCalendarLink(event: WeddingEvent): string {
+  const base = "https://calendar.google.com/calendar/render";
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `${event.title} - ${event.venue}`,
+    dates: `${toGoogleUtc(event.startsAtIso)}/${toGoogleUtc(event.endsAtIso)}`,
+    details: `${event.subtitle}\nAddress: ${event.address}\nTheme: Platform 3 Wedding Journey`,
+    location: event.venue,
+  });
+
+  return `${base}?${params.toString()}`;
+}
+
 function toIcsUtc(dateIso: string): string {
   const date = new Date(dateIso);
   const yyyy = date.getUTCFullYear();

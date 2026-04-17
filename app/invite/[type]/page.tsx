@@ -123,12 +123,11 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
               {type === "both" ? (
                 <SaveCalendarButton
                   events={selectedEvents}
-                  label="Save Both Events to Calendar"
-                  fileName="wedding-reception-platform-3"
+                  label="Add Both Events to Google Calendar"
                 />
               ) : (
                 selectedEvents.map((event) => (
-                  <SaveCalendarButton key={`${event.key}-calendar`} events={[event]} />
+                  <SaveCalendarButton key={`${event.key}-calendar`} events={[event]} label="Add to Google Calendar" />
                 ))
               )}
             </div>
