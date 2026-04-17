@@ -17,6 +17,14 @@ export function Directions({ events }: DirectionsProps) {
             <div className="border-b border-wedding-journey-rail-steel/30 p-4">
               <h3 className="text-lg font-semibold text-wedding-journey-charcoal">{event.title}</h3>
               <p className="text-sm text-wedding-journey-charcoal/70">{event.address}</p>
+              <a
+                href={event.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex rounded-full bg-wedding-journey-maroon px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white"
+              >
+                Open in Google Maps
+              </a>
             </div>
             <div className="aspect-[4/3] w-full">
               <iframe

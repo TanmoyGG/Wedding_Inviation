@@ -10,6 +10,7 @@ export type WeddingEvent = {
   address: string;
   startsAtIso: string;
   endsAtIso: string;
+  mapUrl: string;
   mapEmbedUrl: string;
 };
 
@@ -29,6 +30,7 @@ export const events: Record<"wedding" | "reception", WeddingEvent> = {
     address: "23, Sadar Hospital Road, Feni",
     startsAtIso: "2026-05-03T20:00:00+06:00",
     endsAtIso: "2026-05-03T23:00:00+06:00",
+    mapUrl: "https://maps.app.goo.gl/bR3sWXQsRL7mwT8n8",
     mapEmbedUrl:
       "https://maps.google.com/maps?q=23%2C%20Sadar%20Hospital%20Road%2C%20Feni&t=&z=15&ie=UTF8&iwloc=&output=embed",
   },
@@ -42,6 +44,7 @@ export const events: Record<"wedding" | "reception", WeddingEvent> = {
     address: "Mirpur 12, Dhaka",
     startsAtIso: "2026-05-08T14:00:00+06:00",
     endsAtIso: "2026-05-08T17:00:00+06:00",
+    mapUrl: "https://maps.app.goo.gl/fmanQmkBDPVZtbb47",
     mapEmbedUrl:
       "https://maps.google.com/maps?q=Mirpur%2012%2C%20Dhaka&t=&z=15&ie=UTF8&iwloc=&output=embed",
   },

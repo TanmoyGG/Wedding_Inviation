@@ -78,47 +78,54 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
           </p>
         </section>
 
-        <StationMarquee text="Next Stop: Happily Ever After" />
+        <StationMarquee
+          lines={[
+            "Next Stop: Happily Ever After",
+            ...storyLines,
+          ]}
+        />
 
         <StoryGallery frames={openingFrames} />
 
         <StoryLines lines={storyLines} />
 
-        <section className="overflow-hidden rounded-3xl border border-wedding-journey-brass/35 bg-white/65 shadow-ticket">
-          <div className="relative aspect-[4/5] w-full sm:aspect-[16/10]">
-            <Image
-              src={dynamicInviteImage}
-              alt={`${type} invitation artwork`}
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-wedding-journey-maroon/70 via-wedding-journey-maroon/25 to-transparent" />
+        <section className="grid gap-5 rounded-3xl border border-wedding-journey-brass/35 bg-white/70 p-4 shadow-ticket sm:p-6 lg:grid-cols-[1.35fr_1fr]">
+          <div className="overflow-hidden rounded-2xl border border-wedding-journey-brass/35 bg-white">
+            <div className="relative aspect-[4/5] w-full sm:aspect-[16/10]">
+              <Image
+                src={dynamicInviteImage}
+                alt={`${type} invitation artwork`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 760px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
 
-            <div className="absolute inset-x-3 bottom-3 top-3 flex items-end sm:inset-x-5 sm:bottom-5">
-              <div className="w-full space-y-4">
-                <div className="max-w-2xl rounded-2xl border border-wedding-journey-brass/55 bg-white/88 p-4 backdrop-blur-sm sm:p-5">
-                  <p className="text-xs uppercase tracking-[0.2em] text-wedding-journey-maroon">
-                    Invitation Details
-                  </p>
-                  <h2 className="mt-2 font-display text-2xl leading-tight text-wedding-journey-maroon sm:text-3xl">
-                    {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}
-                  </h2>
-                </div>
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-wedding-journey-brass/55 bg-wedding-journey-ticket-paper/90 p-5">
+              <p className="text-xs uppercase tracking-[0.2em] text-wedding-journey-maroon">
+                Invitation Details
+              </p>
+              <h2 className="mt-2 font-display text-2xl leading-tight text-wedding-journey-maroon sm:text-3xl">
+                {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}
+              </h2>
+              <p className="mt-2 text-sm text-wedding-journey-charcoal/75">
+                Crafted with the same mood and palette as your original invitation artwork.
+              </p>
+            </div>
 
-                <div className="grid gap-3 md:grid-cols-2">
-                  {selectedEvents.map((event) => (
-                    <EventTicket key={event.key} event={event} />
-                  ))}
-                </div>
+            <div className="space-y-3">
+              {selectedEvents.map((event) => (
+                <EventTicket key={event.key} event={event} />
+              ))}
+            </div>
 
-                <div className="flex flex-wrap gap-3">
-                  {selectedEvents.map((event) => (
-                    <SaveCalendarButton key={`${event.key}-calendar`} event={event} />
-                  ))}
-                </div>
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {selectedEvents.map((event) => (
+                <SaveCalendarButton key={`${event.key}-calendar`} event={event} />
+              ))}
             </div>
           </div>
         </section>
