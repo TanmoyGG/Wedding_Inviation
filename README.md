@@ -5,7 +5,7 @@ Modern, interactive, mobile-responsive wedding invitation built with Next.js App
 ## Couple
 
 - Groom: Parth Saha
-- Bride: Trisha Das
+- Bride: Trisa Das
 
 ## Dynamic Routes
 

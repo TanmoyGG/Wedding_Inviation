@@ -21,7 +21,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Platform 3 | Wedding Invitation",
-  description: "Interactive wedding invitation for Parth Saha and Trisha Das",
+  description: "Interactive wedding invitation for Parth Saha and Trisa Das",
 };
 
 export default function RootLayout({

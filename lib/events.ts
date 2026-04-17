@@ -15,7 +15,7 @@ export type WeddingEvent = {
 
 export const couple = {
   groom: "Parth Saha",
-  bride: "Trisha Das",
+  bride: "Trisa Das",
 };
 
 export const events: Record<"wedding" | "reception", WeddingEvent> = {
@@ -55,4 +55,10 @@ export function getEventsForType(type: InviteType): WeddingEvent[] {
   if (type === "wedding") return [events.wedding];
   if (type === "reception") return [events.reception];
   return [events.wedding, events.reception];
+}
+
+export function getInviteImageForType(type: InviteType): string {
+  if (type === "wedding") return "/assets/images/invite-wedding-page4.jpg";
+  if (type === "reception") return "/assets/images/invite-reception-page4.jpg";
+  return "/assets/images/invite-wedding-reception-page4.jpg";
 }
