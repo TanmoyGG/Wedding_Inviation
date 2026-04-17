@@ -120,9 +120,17 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {selectedEvents.map((event) => (
-                <SaveCalendarButton key={`${event.key}-calendar`} event={event} />
-              ))}
+              {type === "both" ? (
+                <SaveCalendarButton
+                  events={selectedEvents}
+                  label="Save Both Events to Calendar"
+                  fileName="wedding-reception-platform-3"
+                />
+              ) : (
+                selectedEvents.map((event) => (
+                  <SaveCalendarButton key={`${event.key}-calendar`} events={[event]} />
+                ))
+              )}
             </div>
           </div>
         </section>

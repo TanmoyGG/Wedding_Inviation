@@ -15,7 +15,7 @@ function escapeIcs(text: string): string {
   return text.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;").replace(/\n/g, "\\n");
 }
 
-export function createIcsContent(event: WeddingEvent): string {
+function createVEvent(event: WeddingEvent): string[] {
   const uid = `${event.key}-${event.startsAtIso}@platform3.invite`;
   const dtStamp = toIcsUtc(new Date().toISOString());
   const dtStart = toIcsUtc(event.startsAtIso);
@@ -27,11 +27,6 @@ export function createIcsContent(event: WeddingEvent): string {
   );
 
   return [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Platform3Invite//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
     "BEGIN:VEVENT",
     `UID:${uid}`,
     `DTSTAMP:${dtStamp}`,
@@ -41,6 +36,19 @@ export function createIcsContent(event: WeddingEvent): string {
     `LOCATION:${location}`,
     `DESCRIPTION:${description}`,
     "END:VEVENT",
+  ];
+}
+
+export function createIcsContent(events: WeddingEvent | WeddingEvent[]): string {
+  const normalized = Array.isArray(events) ? events : [events];
+
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Platform3Invite//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    ...normalized.flatMap((event) => createVEvent(event)),
     "END:VCALENDAR",
   ].join("\r\n");
 }
