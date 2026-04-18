@@ -16,7 +16,7 @@ export function StationMarquee({ lines }: StationMarqueeProps) {
         className="whitespace-nowrap font-mono text-sm uppercase tracking-[0.18em] text-[#f7a53a] sm:text-base"
         initial={{ x: 0 }}
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 36, ease: "linear", repeat: Infinity }}
+        transition={{ duration: 28, ease: "linear", repeat: Infinity }}
       >
         <span>{repeated}</span>
         <span>{repeated}</span>
