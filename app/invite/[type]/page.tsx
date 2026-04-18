@@ -54,6 +54,8 @@ export async function generateMetadata({ params }: InvitePageProps): Promise<Met
       images: [
         {
           url: "/og/cover.jpg",
+          secureUrl: "/og/cover.jpg",
+          type: "image/jpeg",
           width: 1875,
           height: 2325,
           alt: "Partha and Trisa wedding invitation cover",
