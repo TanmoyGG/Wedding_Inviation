@@ -24,8 +24,32 @@ export const metadata: Metadata = {
   description: "Interactive wedding invitation for Partha Saha and Trisa Das",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : "https://partha-weds-trisa-invitation.vercel.app")
   ),
+  openGraph: {
+    type: "website",
+    siteName: "Partha & Trisa Wedding Invitation",
+    title: "Partha & Trisa | Wedding Ceremony",
+    description: "Interactive wedding invitation for Partha Saha and Trisa Das",
+    images: [
+      {
+        url: "/og/cover.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Partha and Trisa wedding invitation cover",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Partha & Trisa | Wedding Ceremony",
+    description: "Interactive wedding invitation for Partha Saha and Trisa Das",
+    images: ["/og/cover.jpg"],
+  },
 };
 
 export default function RootLayout({
