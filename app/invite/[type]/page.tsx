@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: InvitePageProps): Promise<Met
       images: [
         {
           url: "/og/cover.jpg",
-          secureUrl: "/og/cover.jpg",
+          secureUrl: "https://partha-weds-trisa-invitation.vercel.app/og/cover.jpg",
           type: "image/jpeg",
           width: 1875,
           height: 2325,
