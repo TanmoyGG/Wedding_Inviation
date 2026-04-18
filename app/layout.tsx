@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og/cover.jpg",
-        width: 1200,
-        height: 630,
+        width: 1875,
+        height: 2325,
         alt: "Partha and Trisa wedding invitation cover",
       },
     ],
