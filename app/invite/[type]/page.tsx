@@ -13,6 +13,7 @@ import {
   getInviteImageForType,
   isInviteType,
 } from "@/lib/events";
+import type { Metadata } from "next";
 
 type InvitePageProps = {
   params: Promise<{ type: string }>;
@@ -20,6 +21,41 @@ type InvitePageProps = {
 
 export function generateStaticParams() {
   return [{ type: "wedding" }, { type: "reception" }, { type: "both" }];
+}
+
+export async function generateMetadata({ params }: InvitePageProps): Promise<Metadata> {
+  const { type } = await params;
+
+  if (!isInviteType(type)) {
+    return {};
+  }
+
+  const titleMap = {
+    wedding: "Partha & Trisa | Wedding Ceremony",
+    reception: "Partha & Trisa | Reception",
+    both: "Partha & Trisa | Wedding Ceremony and Reception",
+  } as const;
+
+  const descriptionMap = {
+    wedding: "Wedding invitation for Partha Saha and Trisa Das.",
+    reception: "Reception invitation for Partha Saha and Trisa Das.",
+    both: "Wedding and reception invitation for Partha Saha and Trisa Das.",
+  } as const;
+
+  return {
+    title: titleMap[type],
+    description: descriptionMap[type],
+    openGraph: {
+      title: titleMap[type],
+      description: descriptionMap[type],
+      images: ["/assets/images/Front page.jpg"],
+    },
+    twitter: {
+      title: titleMap[type],
+      description: descriptionMap[type],
+      images: ["/assets/images/Front page.jpg"],
+    },
+  };
 }
 
 export default async function InviteTypePage({ params }: InvitePageProps) {
@@ -62,7 +98,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
     `Boarding the train to forever with ${couple.groom} and ${couple.bride}`,
     "Two souls, one ticket to paradise.",
     `Witness the union of ${couple.groom} and ${couple.bride} as they begin their new chapter together`,
-    `Together with their families, Parth and Trisa invite you to share in their joy`,
+    `Together with their families, ${couple.groom} and ${couple.bride} invite you to share in their joy`,
   ];
 
   return (
@@ -70,7 +106,7 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <section className="rounded-3xl border border-wedding-journey-brass/35 bg-white/70 px-5 py-7 text-center shadow-ticket sm:px-10">
           <h1 className="font-display text-4xl leading-tight text-wedding-journey-maroon sm:text-6xl">
-            The Journey of Parth & Trisa
+            The Journey of Partha & Trisa
           </h1>
           <p className="mt-3 text-sm uppercase tracking-[0.18em] text-wedding-journey-charcoal/70 sm:text-base">
             {type === "both" ? "Wedding and Reception" : selectedEvents[0].title}

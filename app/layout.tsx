@@ -20,8 +20,12 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Platform 3 | Wedding Invitation",
-  description: "Interactive wedding invitation for Parth Saha and Trisa Das",
+  title: "Partha & Trisa | Wedding Ceremony",
+  description: "Interactive wedding invitation for Partha Saha and Trisa Das",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+  ),
 };
 
 export default function RootLayout({

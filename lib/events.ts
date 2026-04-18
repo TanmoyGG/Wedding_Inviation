@@ -15,7 +15,7 @@ export type WeddingEvent = {
 };
 
 export const couple = {
-  groom: "Parth Saha",
+  groom: "Partha Saha",
   bride: "Trisa Das",
 };
 
