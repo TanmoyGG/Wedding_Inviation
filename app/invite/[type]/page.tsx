@@ -80,7 +80,6 @@ export default async function InviteTypePage({ params }: InvitePageProps) {
     {
       src: "/assets/images/Bride and groom introduction.jpg",
       alt: "Bride and groom introduction",
-      caption: `${couple.groom} and ${couple.bride}`,
     },
   ];
 
