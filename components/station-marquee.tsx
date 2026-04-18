@@ -28,7 +28,7 @@ export function StationMarquee({ lines }: StationMarqueeProps) {
         className="block whitespace-nowrap font-mono text-sm uppercase tracking-[0.18em] text-[#f7a53a] lg:hidden"
         initial={{ x: 0 }}
         animate={{ x: ["0%", "-1400%"] }}
-        transition={{ duration: 50, ease: "linear", repeat: Infinity }}
+        transition={{ duration: 70, ease: "linear", repeat: Infinity }}
       >
         <span>{repeated}</span>
       </motion.div>
